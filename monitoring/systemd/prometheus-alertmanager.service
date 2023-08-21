@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus Alert Manager
+Wants=network-online.target nps.mount
+After=network-online.target nps.mount
+
+[Service]
+WorkingDirectory=/opt/prometheus/alertmanager-0.21.0.linux-amd64
+ExecStart=/opt/prometheus/alertmanager-0.21.0.linux-amd64/alertmanager --config.file=alertmanager.yml
+Type=simple
+User=root
+
+[Install]
+WantedBy=multi-user.target
